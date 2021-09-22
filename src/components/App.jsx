@@ -1,3 +1,7 @@
+import { Route } from 'react-router-dom';
+
 export const App = () => {
-  return <div> APP</div>;
+  return (
+      <Route
+  )
 };
