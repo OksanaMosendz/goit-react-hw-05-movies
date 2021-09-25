@@ -26,6 +26,7 @@ export const MoviesPage = () => {
           type="text"
           onChange={e => setInputValue(e.target.value)}
           value={inputValue}
+          autoComplete="off"
         />
         <button type="submit">Search</button>
       </form>
