@@ -11,6 +11,7 @@ import { fetchMovieById } from '../../services/moviesAPI';
 import { Reviews } from '../Reviews/Reviews';
 import { Cast } from '../Cast/Cast';
 import { HomePage } from '../HomePage/HomePage';
+import css from './MovieDetailsPage.module.css';
 
 export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
@@ -31,18 +32,12 @@ export const MovieDetailsPage = () => {
       <Router>
         {movie && (
           <>
-            <div>
+            <div className={css.MovieMainInfo}>
               <img
+                className={css.MoviePoster}
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
               />
-              {/* // ) : (
-            //   <img
-            //     src={`https://i2.wp.com/rollingfilmfestival.com/wp-content/uploads/2021/01/no-poster-available.png?resize=1080%2C1526&ssl=1}`}
-            //     alt={movie.title}
-            //   />
-            // )} */}
-
               <div>
                 <h1>{movie.title}</h1>
                 <p>User Score: {movie.vote_average * 10}%</p>
@@ -59,9 +54,8 @@ export const MovieDetailsPage = () => {
                   </ul>
                 )}
               </div>
-              <hr />
             </div>
-
+            <hr />
             <div>
               <h2>Additional information</h2>
               <ul>
