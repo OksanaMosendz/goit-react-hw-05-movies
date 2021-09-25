@@ -14,7 +14,9 @@ export const Reviews = () => {
 
   return (
     <>
-      {reviews ? (
+      {reviews.length === 0 ? (
+        <p>We dont have any reviews for this movie.</p>
+      ) : (
         <ul>
           {reviews.map(review => (
             <li key={review.id}>
@@ -23,8 +25,6 @@ export const Reviews = () => {
             </li>
           ))}
         </ul>
-      ) : (
-        <p>We dont have any reviews for this movie.</p>
       )}
     </>
   );

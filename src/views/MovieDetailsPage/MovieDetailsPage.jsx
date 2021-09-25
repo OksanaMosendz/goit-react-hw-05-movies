@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useRouteMatch } from 'react-router-dom';
+import { useParams, Link, useRouteMatch, Route } from 'react-router-dom';
 import { fetchMovieById } from '../../services/moviesAPI';
+import { Reviews } from '../Reviews/Reviews';
+import { Cast } from '../Cast/Cast';
 
 export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
   const { movieId } = useParams();
   const { url } = useRouteMatch();
+  console.log(url);
   useEffect(() => {
     fetchMovieById(movieId).then(setMovie);
   }, [movieId]);
@@ -59,6 +62,13 @@ export const MovieDetailsPage = () => {
               </li>
             </ul>
           </div>
+
+          <Route path="/movies/:movieId/cast">
+            <Cast />
+          </Route>
+          <Route path="/movies/:movieId/reviews">
+            <Reviews />
+          </Route>
         </>
       )}
     </>
