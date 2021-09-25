@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useRouteMatch, Route } from 'react-router-dom';
+import { useParams, Link, useRouteMatch } from 'react-router-dom';
 import { fetchMovieById } from '../../services/moviesAPI';
-import { Cast } from '../Cast/Cast';
-import { Reviews } from '../Reviews/Reviews';
 
 export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
   const { movieId } = useParams();
-  const { url, path } = useRouteMatch();
+  const { url } = useRouteMatch();
   useEffect(() => {
     fetchMovieById(movieId).then(setMovie);
   }, [movieId]);
-
-  console.log(movie);
-  console.log(useRouteMatch());
 
   return (
     <>
@@ -28,10 +23,16 @@ export const MovieDetailsPage = () => {
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.title}
             />
+            {/* // ) : (
+            //   <img
+            //     src={`https://i2.wp.com/rollingfilmfestival.com/wp-content/uploads/2021/01/no-poster-available.png?resize=1080%2C1526&ssl=1}`}
+            //     alt={movie.title}
+            //   />
+            // )} */}
 
             <div>
               <h1>{movie.title}</h1>
-              <p></p>
+              <p>User Score: {movie.vote_average * 10}%</p>
               <h2>Overview</h2>
               <p>{movie.overview}</p>
 
@@ -58,9 +59,6 @@ export const MovieDetailsPage = () => {
               </li>
             </ul>
           </div>
-
-          <Route path={`${path}/cast`} exact component={Cast} />
-          <Route path={`${path}/reviews`} exact component={Reviews} />
         </>
       )}
     </>
