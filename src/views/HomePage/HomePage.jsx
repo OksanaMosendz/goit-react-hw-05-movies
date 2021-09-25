@@ -11,8 +11,6 @@ export const HomePage = () => {
     );
   }, [setMovies]);
 
-  console.log(movies);
-
   return (
     <>
       <h1>Trending Today</h1>
