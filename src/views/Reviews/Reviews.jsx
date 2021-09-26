@@ -10,7 +10,6 @@ export const Reviews = () => {
       setReviews(fetchedReviews.results),
     );
   }, [movieId]);
-  console.log(reviews);
 
   return (
     <>

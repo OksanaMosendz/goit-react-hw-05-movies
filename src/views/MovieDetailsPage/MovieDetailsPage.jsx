@@ -6,6 +6,8 @@ import {
   useRouteMatch,
   Route,
   Switch,
+  useLocation,
+  useHistory,
 } from 'react-router-dom';
 import { fetchMovieById } from '../../services/moviesAPI';
 import { Reviews } from '../Reviews/Reviews';
@@ -17,17 +19,21 @@ export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   const { url, path } = useRouteMatch();
-  console.log(url, path);
+  const location = useLocation();
+  const history = useHistory();
+
   useEffect(() => {
     fetchMovieById(movieId).then(setMovie);
   }, [movieId]);
 
+  const onGoBack = () => history.push(location?.state?.from ?? '/');
+
   return (
     <>
       {movie && (
-        <Link to="/">
-          <button>Go back</button>
-        </Link>
+        <button type="button" onClick={onGoBack}>
+          Go back
+        </button>
       )}
       <Router>
         {movie && (

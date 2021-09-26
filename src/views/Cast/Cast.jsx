@@ -9,7 +9,7 @@ export const Cast = () => {
   useEffect(() => {
     fetchMovieCast(movieId).then(fetchedCast => setCast(fetchedCast.cast));
   }, [movieId]);
-  console.log(movieId);
+
   return (
     <>
       <ul className={css.CastList}>
