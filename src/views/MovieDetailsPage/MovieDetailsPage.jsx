@@ -10,6 +10,7 @@ import {
   useHistory,
 } from 'react-router-dom';
 import css from './MovieDetailsPage.module.css';
+import { Fallback } from 'views/Fallback/Fallback';
 import { fetchMovieById } from '../../services/moviesAPI';
 const Reviews = lazy(() => import('../Reviews/Reviews'));
 const Cast = lazy(() => import('../Cast/Cast'));
@@ -77,7 +78,7 @@ export default function MovieDetailsPage() {
         )}
 
         <Switch>
-          <Suspense fallback="Loading">
+          <Suspense fallback={<Fallback />}>
             <Route path={`${path}/cast`} component={Cast} />
             <Route path={`${path}/reviews`} component={Reviews} />
           </Suspense>
