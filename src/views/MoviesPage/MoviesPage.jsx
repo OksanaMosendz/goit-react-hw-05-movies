@@ -4,7 +4,7 @@ import { searchMovieByWord } from '../../services/moviesAPI';
 import css from './MoviesPage.module.css';
 import queryString from 'query-string';
 
-export const MoviesPage = () => {
+export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [searchWord, setSearchWord] = useState('');
@@ -82,4 +82,4 @@ export const MoviesPage = () => {
       )}
     </>
   );
-};
+}

@@ -2,7 +2,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchTrendingMoviesToday } from '../../services/moviesAPI';
 import css from './HomePage.module.css';
-export const HomePage = () => {
+
+export default function HomePage() {
   const [movies, setMovies] = useState(null);
   const location = useLocation();
   useEffect(() => {
@@ -46,4 +47,4 @@ export const HomePage = () => {
       )}
     </>
   );
-};
+}

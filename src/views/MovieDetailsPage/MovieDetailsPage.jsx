@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { lazy, Suspense, useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   useParams,
@@ -9,13 +9,12 @@ import {
   useLocation,
   useHistory,
 } from 'react-router-dom';
-import { fetchMovieById } from '../../services/moviesAPI';
-import { Reviews } from '../Reviews/Reviews';
-import { Cast } from '../Cast/Cast';
-import { HomePage } from '../HomePage/HomePage';
 import css from './MovieDetailsPage.module.css';
+import { fetchMovieById } from '../../services/moviesAPI';
+const Reviews = lazy(() => import('../Reviews/Reviews'));
+const Cast = lazy(() => import('../Cast/Cast'));
 
-export const MovieDetailsPage = () => {
+export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   const { url, path } = useRouteMatch();
@@ -78,11 +77,12 @@ export const MovieDetailsPage = () => {
         )}
 
         <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path={`${path}/cast`} component={Cast} />
-          <Route path={`${path}/reviews`} component={Reviews} />
+          <Suspense fallback="Loading">
+            <Route path={`${path}/cast`} component={Cast} />
+            <Route path={`${path}/reviews`} component={Reviews} />
+          </Suspense>
         </Switch>
       </Router>
     </>
   );
-};
+}
