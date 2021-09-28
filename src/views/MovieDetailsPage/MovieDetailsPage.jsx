@@ -10,10 +10,10 @@ import {
   useHistory,
 } from 'react-router-dom';
 import css from './MovieDetailsPage.module.css';
-import { Fallback } from 'views/Fallback/Fallback';
+import { Fallback } from 'components/Fallback/Fallback';
 import { fetchMovieById } from '../../services/moviesAPI';
-const Reviews = lazy(() => import('../Reviews/Reviews'));
-const Cast = lazy(() => import('../Cast/Cast'));
+const Reviews = lazy(() => import('../../components/Reviews/Reviews'));
+const Cast = lazy(() => import('../../components/Cast/Cast'));
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);

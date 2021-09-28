@@ -8,16 +8,10 @@ export const fetchMovieById = movieId =>
   fetch(`${BASE_URL}/movie/${movieId}?${API_KEY}`).then(resp => resp.json());
 
 export const fetchMovieCast = movieId =>
-  fetch(`${BASE_URL}/movie/${movieId}/credits?${API_KEY}`).then(resp =>
-    resp.json(),
-  );
+  fetch(`${BASE_URL}/movie/${movieId}/credits?${API_KEY}`).then(resp => resp.json());
 
 export const fetchMovieReviews = movieId =>
-  fetch(`${BASE_URL}/movie/${movieId}/reviews?${API_KEY}`).then(resp =>
-    resp.json(),
-  );
+  fetch(`${BASE_URL}/movie/${movieId}/reviews?${API_KEY}`).then(resp => resp.json());
 
 export const searchMovieByWord = searchWord =>
-  fetch(`${BASE_URL}search/movie?${API_KEY}&query=${searchWord}`).then(resp =>
-    resp.json(),
-  );
+  fetch(`${BASE_URL}search/movie?${API_KEY}&query=${searchWord}`).then(resp => resp.json());

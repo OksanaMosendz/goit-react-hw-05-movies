@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { Fallback } from 'views/Fallback/Fallback';
+import { Fallback } from 'components/Fallback/Fallback';
 import { AppBar } from './components/AppBar/AppBar';
 import { Container } from './components/Container/Container';
 
